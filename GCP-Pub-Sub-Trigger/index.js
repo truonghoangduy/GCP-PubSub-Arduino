@@ -8,9 +8,12 @@ const firestore = new Firestore()
 exports.subscribe = (pubsubMessage) => {
     // Print out the data from Pub/Sub, to prove that it worked
     // firebase.database.ref("duy-beo-test").
+    let message = Buffer.from(pubsubMessage.data, 'base64').toString()
+
     firestore.collection("duy-beo-test").doc().set({
-        "hello"
-            : 123
+        "message"
+            : message
     })
-    console.log(Buffer.from(pubsubMessage.data, 'base64').toString());
+    // console.log(Buffer.from(pubsubMessage.data, 'base64').toString());
+
 };
