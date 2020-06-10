@@ -3,7 +3,26 @@
 #include <OneButton.h>
 #define INPUT_PINS 35
 #define OUTPUT_PINS 27
-OneButton onebutton(INPUT_PINS, 0);
+
+OneButton oneButton(INPUT_PINS, 0);
+
+void callBack()
+{
+
+  Serial.println("hello");
+  digitalWrite(OUTPUT_PINS, HIGH);
+  delay(500);
+  digitalWrite(OUTPUT_PINS, LOW);
+
+  if (publishTelemetry("/test01","1"))
+  {
+    Serial.print("ok");
+  }else{
+    Serial.print("fail");
+  }
+  
+}
+
 
 void longPressStopCallBack()
 {
@@ -25,21 +44,19 @@ void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  
   pinMode(INPUT_PINS, INPUT);
   pinMode(OUTPUT_PINS, OUTPUT);
   setupCloudIoT();
-
-  onebutton.attachLongPressStop(longPressStopCallBack);
+  oneButton.attachLongPressStop(callBack);
 }
 
-unsigned long lastMillis = 0;
-void loop()
-{
-  onebutton.tick();
-  // Serial.println("Hello");
-  // 0
 
-  // Serial.println(digitalRead(4));
+
+unsigned long lastMillis = 0;
+void loop() {
+  oneButton.tick();
+
   mqtt->loop();
   delay(10); // <- fixes some issues with WiFi stability
 
