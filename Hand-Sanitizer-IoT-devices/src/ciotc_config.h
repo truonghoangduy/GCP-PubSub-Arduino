@@ -21,7 +21,7 @@ const char *password = "0937437499";
 // Cloud iot details.
 const char *project_id = "cybernetic-arc-250007";
 const char *location = "asia-east1";
-const char *registry_id = "hoa-sen-ui";
+const char *registry_id = "hoa-sen-uni";
 const char *device_id = "S258456";
 
 // Configuration for NTP

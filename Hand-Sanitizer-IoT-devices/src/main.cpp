@@ -1,15 +1,45 @@
 #include <Arduino.h>
 #include "esp32-mqtt.h"
+#include <OneButton.h>
+#define INPUT_PINS 35
+#define OUTPUT_PINS 27
+
+OneButton oneButton(INPUT_PINS, 0);
+
+void callBack()
+{
+
+  Serial.println("hello");
+  digitalWrite(OUTPUT_PINS, HIGH);
+  delay(500);
+  digitalWrite(OUTPUT_PINS, LOW);
+
+  if (publishTelemetry("/test01","1"))
+  {
+    Serial.print("ok");
+  }else{
+    Serial.print("fail");
+  }
+  
+}
+
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  pinMode(LED_BUILTIN, OUTPUT);
+  
+  pinMode(INPUT_PINS, INPUT);
+  pinMode(OUTPUT_PINS, OUTPUT);
   setupCloudIoT();
+  oneButton.attachLongPressStop(callBack);
 }
+
+
 
 unsigned long lastMillis = 0;
 void loop() {
+  oneButton.tick();
+
   mqtt->loop();
   delay(10);  // <- fixes some issues with WiFi stability
 
