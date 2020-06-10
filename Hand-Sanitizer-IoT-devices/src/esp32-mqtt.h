@@ -89,6 +89,10 @@ bool publishTelemetry(String data) {
   return mqtt->publishTelemetry(data);
 }
 
+bool publishCustomTopic(String data){
+ return mqttClient->publish("test01",data.c_str());
+}
+
 bool publishTelemetry(const char* data, int length) {
   return mqtt->publishTelemetry(data, length);
 }

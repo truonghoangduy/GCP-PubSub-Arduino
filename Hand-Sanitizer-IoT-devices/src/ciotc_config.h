@@ -21,7 +21,7 @@ const char *password = "0937437499";
 // Cloud iot details.
 const char *project_id = "cybernetic-arc-250007";
 const char *location = "asia-east1";
-const char *registry_id = "hoa-sen-ui";
+const char *registry_id = "hoa-sen-uni";
 const char *device_id = "S258456";
 
 // Configuration for NTP
@@ -44,6 +44,7 @@ const char *private_key_str =
     "ca:0e:08:b8:6b:e6:cf:8c:22:5d:40:c6:79:64:b8:"
     "38:74:59:49:37:0f:bc:80:2d:36:95:05:94:93:8a:"
     "51:db";
+    //https://github.com/Xinyuan-LilyGO/LilyGo-Camera-Series/tree/master/sketch
     // https://github.com/Nilhcem/esp32-cloud-iot-core-k8s/tree/master/02-esp32_bme280_ciotc_arduino
 
 // Time (seconds) to expire token += 20 minutes for drift
