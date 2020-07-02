@@ -15,8 +15,8 @@
 // This file contains your configuration used to connect to Cloud IoT Core
 
 // Wifi network details.
-const char *ssid = "NguyenDieuLinh";
-const char *password = "0937437499";
+const char *ssid = "HSU_Students";
+const char *password = "dhhs12cnvch";
 
 // Cloud iot details.
 const char *project_id = "cybernetic-arc-250007";
